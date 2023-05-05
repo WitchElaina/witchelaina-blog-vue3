@@ -1,0 +1,38 @@
+{
+  "name": "vue-blog",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "@duskmoon/vue3-typed-js": "^0.0.4",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@vueuse/head": "^1.1.26",
+    "sass": "^1.62.1",
+    "typed.js": "^2.0.16",
+    "unhead": "^1.1.26",
+    "vue": "^3.2.47",
+    "vue-clipboard3": "^2.0.0",
+    "vue-meta": "^3.0.0-alpha.2",
+    "vue-router": "^4.1.6",
+    "vue-typed-js": "^0.1.2",
+    "vue-writer": "^1.2.0"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "eslint": "^8.34.0",
+    "eslint-plugin-vue": "^9.9.0",
+    "prettier": "^2.8.4",
+    "vite": "^4.1.4"
+  }
+}
