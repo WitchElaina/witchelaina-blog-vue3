@@ -14,7 +14,39 @@ const config = {
         icon: 'fa-brands fa-twitter',
         link: 'https://twitter.com/Mszook2002',
       },
+      {
+        name: 'Mail',
+        icon: 'fa-solid fa-envelope',
+        link: 'mailto:mail@mszook.art',
+      },
     ],
+    nav: {
+      home: {
+        text: '主页',
+        link: '/',
+        icon: 'fa-solid fa-home',
+      },
+      catalog: {
+        text: '目录',
+        link: '/catalog',
+        icon: 'fa-solid fa-book',
+      },
+      archive: {
+        text: '归档',
+        link: '/archive',
+        icon: 'fa-solid fa-archive',
+      },
+      anime: {
+        text: '追番',
+        link: '/anime',
+        icon: 'fa-brands fa-bilibili',
+      },
+      friends: {
+        text: '友链',
+        link: '/friends',
+        icon: 'fa-solid fa-link',
+      },
+    },
   },
   plugin: {
     hitokoto: {

@@ -25,7 +25,7 @@ const darkMode = ref(window.matchMedia('(prefers-color-scheme: dark)').matches);
 watch(
   darkMode,
   () => {
-    backgroundColor.value = hexVarToRgba('--md-sys-color-surface', 0.5);
+    backgroundColor.value = hexVarToRgba('--md-sys-color-surface', 0.7);
   },
   {
     immediate: true,
@@ -42,15 +42,15 @@ if (window.matchMedia) {
 
 <style scoped lang="scss">
 .card-wrapper {
-  backdrop-filter: blur(11px);
-  -webkit-backdrop-filter: blur(11px);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
 
   width: fit-content;
 
   border-radius: 25px;
 
   padding: 20px;
-  margin: 20px;
+  margin: 15px;
 
   box-shadow: 0 6px 10px 0 rgba($color: #000000, $alpha: 0.5);
   -webkit-box-shadow: 0 6px 10px 0 rgba($color: #000000, $alpha: 0.5);

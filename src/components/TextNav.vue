@@ -1,3 +1,23 @@
+<template>
+  <div class="nav-wrapper">
+    <div
+      class="nav-item-wrapper"
+      :class="[nav.id === curActive ? 'nav-item-wrapper-active' : '']"
+      v-for="nav in navList"
+      :key="nav.id"
+      @click="$emit('update:curActive', nav.id)"
+    >
+      <div class="nav-icon">
+        <i :class="nav.icon"></i>
+      </div>
+      <div class="nav-text">
+        {{ nav.text }}
+      </div>
+      <div class="nav-state-layer"></div>
+    </div>
+  </div>
+</template>
+
 <script>
 export default {
   name: 'TextNav',
@@ -7,270 +27,67 @@ export default {
 };
 </script>
 
-<template>
-  <div class="segmented-wrapper" draggable="false">
-    <div
-      class="button-wrapper"
-      v-for="button in buttons"
-      :key="button.id"
-      :class="{ toggled: button.toggled }"
-      @mouseover="handleMouseOver(button.id)"
-      @mouseleave="handleMouseLeave(button.id)"
-      @mousedown="handleMouseDown(button.id)"
-      @mouseup="handleMouseUp(button.id)"
-      :style="{
-        width: wrapperWidth,
-      }"
-    >
-      <div
-        class="button-content label-large"
-        :class="{ disable: button.disable }"
-      >
-        <div v-if="button.icon || button.toggled" class="button-icon">
-          <mty-icons
-            :type="button.iconType"
-            :icon="button.toggled ? 'check' : button.icon"
-            :size="18"
-          />
-        </div>
-        <div class="button-label">
-          {{ button.label }}
-        </div>
-      </div>
-
-      <div
-        class="button-layer"
-        :class="{
-          hovered: button.isHovering,
-          disable: button.disable,
-          pressed: button.isPressed,
-        }"
-      ></div>
-
-      <div class="button-container" :class="{ disable: button.disable }"></div>
-    </div>
-  </div>
-</template>
-
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { onMounted } from 'vue';
 
 const props = defineProps({
-  options: {
+  navList: {
     type: Array,
-    required: true,
+    default: () => [],
   },
-  selected: {
+  curActive: {
     type: String,
-    required: false,
+    default: '',
   },
 });
 
-const buttons = ref([]);
+const emit = defineEmits(['update:curActive']);
 
 onMounted(() => {
-  buttons.value = props.options.map((option) => {
-    return {
-      id: option.id,
-      label: option.label,
-      icon: option.icon ? option.icon : '',
-      iconType: option.iconType ? option.iconType : 'outlined',
-      disable: option.disable ? option.disable : false,
-      isHovering: false,
-      toggled: option.toggled ? option.toggled : false,
-    };
-  });
-});
-
-// set initial selected
-onMounted(() => {
-  if (props.selected) {
-    buttons.value.forEach((button) => {
-      if (button.id === props.selected) {
-        button.toggled = true;
-      }
-    });
-  } else {
-    buttons.value[0].toggled = true;
+  if (!props.curActive && props.navList.length > 0) {
+    emit('update:curActive', props.navList[0].id);
   }
-});
-
-const emit = defineEmits(['update:selected']);
-
-const curSelect = computed({
-  get() {
-    return buttons.value.find((button) => button.toggled).id;
-  },
-  set(id) {
-    emit('update:selected', id);
-  },
-});
-
-const handleMouseOver = (id) => {
-  buttons.value.forEach((button) => {
-    if (button.id === id) {
-      button.isHovering = true;
-    }
-  });
-};
-
-const handleMouseLeave = (id) => {
-  buttons.value.forEach((button) => {
-    if (button.id === id) {
-      button.isHovering = false;
-    }
-  });
-};
-
-const handleMouseDown = (id) => {
-  buttons.value.forEach((button) => {
-    if (button.id === id) {
-      button.isHovering = false;
-      button.isPressed = true;
-    }
-  });
-};
-
-const handleMouseUp = (id) => {
-  // update modle
-  buttons.value.forEach((button) => {
-    if (button.id === id) {
-      curSelect.value = id;
-      button.toggled = true;
-    } else {
-      button.toggled = false;
-    }
-  });
-
-  // update ui
-  buttons.value.forEach((button) => {
-    if (button.id === id) {
-      button.isHovering = true;
-      button.isPressed = false;
-    } else {
-      button.isHovering = false;
-      button.isPressed = false;
-    }
-  });
-};
-
-const wrapperWidth = computed(() => {
-  // find longest label
-  let longestLabel = '';
-  buttons.value.forEach((button) => {
-    if (button.label.length > longestLabel.length) {
-      longestLabel = button.label;
-    }
-  });
-  // cal px, 24 is left plus right padding, 18 is icon
-  const px = longestLabel.length * 8 + 24 + 18;
-  return px < 48 ? '48px' : `${px}px`;
 });
 </script>
 
-<style scoped>
-.segmented-wrapper {
-  display: flex;
-  flex-direction: row;
-  outline-width: 1px;
-  outline-style: solid;
-  outline-color: var(--md-sys-color-outline);
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.button-wrapper {
-  position: relative;
-  width: fit-content;
-  min-width: 48px;
-  line-height: 40px;
-  outline-style: solid;
-  outline-width: 0px;
-  outline-color: var(--md-sys-color-outline);
-}
-
-.button-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  outline: none;
-}
-
-.button-container.disable {
-  opacity: 0.12;
-}
-
-.button-content {
-  display: flex;
-  flex-direction: row;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 0px 12px;
-  z-index: 2;
-  user-select: none;
-}
-.button-content.disable {
-  opacity: 0.38;
-}
-
-.button-icon {
-  display: flex;
-  align-items: center;
-}
-
-.button-layer {
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
-.button-layer.disable {
-  display: none;
-}
-
-.button-layer.pressed {
-  opacity: var(--md-sys-state-pressed-state-layer-opacity);
-}
-
-.button-layer.hovered {
-  opacity: var(--md-sys-state-hover-state-layer-opacity);
-}
-
-.button-wrapper:not(:last-child) {
-  border-right-width: 1px;
-  border-right-style: solid;
-  border-right-color: var(--md-sys-color-outline);
-}
-</style>
-
 <style lang="scss" scoped>
-.button-wrapper {
-  .button-content {
-    color: var(--md-sys-color-on-surface);
-  }
-  .button-layer {
-    background-color: var(--md-sys-color-on-surface);
-  }
-}
+.nav-wrapper {
+  display: flex;
+  flex-direction: row;
+  user-select: none;
+  margin: 5px;
+  gap: 5px;
 
-.button-wrapper.toggled {
-  .button-content {
-    color: var(--md-sys-color-on-secondary-container);
-  }
-  .button-layer {
-    background-color: var(--md-sys-color-on-secondary-container);
-  }
-  .button-container {
-    background-color: var(--md-sys-color-secondary-container);
+  .nav-item-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    gap: 5px;
+    cursor: pointer;
+    color: var(--md-sys-color-on-surface-variant);
+    &-active {
+      color: var(--md-sys-color-on-primary-container);
+    }
+
+    .nav-state-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: var(--md-sys-color-on-secondary-container);
+      opacity: 0;
+      border-radius: 5px;
+
+      &:hover {
+        opacity: var(--md-sys-state-hover-state-layer-opacity);
+      }
+
+      &:active {
+        opacity: var(--md-sys-state-pressed-state-layer-opacity);
+      }
+    }
   }
 }
 </style>

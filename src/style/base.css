@@ -1,7 +1,8 @@
 @import url(theme.css);
 
 body {
-  background-image: linear-gradient(-225deg, #a8bfff 0%, #884d80 100%);
+  /* background-image: linear-gradient(-225deg, #a8bfff 0%, #884d80 100%); */
+  background-image: url(../../public/back.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

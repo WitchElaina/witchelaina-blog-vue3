@@ -12,7 +12,14 @@ const click = (link) => {
   window.open(link);
 };
 
-const nav = ref('');
+const curNav = ref('');
+
+// 遍历key value
+const navList = Object.entries(site.nav).map(([key, value]) => ({
+  id: key,
+  text: value.text,
+  icon: value.icon,
+}));
 </script>
 
 <template>
@@ -32,14 +39,7 @@ const nav = ref('');
       />
     </div>
     <div class="nav">
-      <TextNav
-        :options="[
-          { id: 'songs', label: 'Songs', icon: 'audiotrack' },
-          { id: 'albums', label: 'Albums', icon: 'album' },
-          { id: 'podcasts', label: 'Podcasts', icon: 'podcasts' },
-        ]"
-        v-model:selected="nav"
-      />
+      <TextNav :navList="navList" v-model:curActive="curNav" />
     </div>
     <div class="hitokoto">
       <Hitokoto />
