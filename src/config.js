@@ -50,8 +50,8 @@ const config = {
   },
   plugin: {
     hitokoto: {
-      api: 'https://international.v1.hitokoto.cn/',
-      type: ['a'], // https://developer.hitokoto.cn/sentence/#句子类型-参数
+      api: 'https://v1.hitokoto.cn/',
+      type: ['a', 'i'], // https://developer.hitokoto.cn/sentence/#句子类型-参数
     },
   },
 };

@@ -3,6 +3,8 @@
     class="card-wrapper"
     :style="{
       backgroundColor,
+      width,
+      maxWidth,
     }"
   >
     <slot />
@@ -18,6 +20,11 @@ export default {
 <script setup>
 import { ref, watch } from 'vue';
 import { hexVarToRgba } from '../utils/hexToRgba';
+
+defineProps({
+  width: String,
+  maxWidth: String,
+});
 
 // 当system preference变化时，更新背景色
 const backgroundColor = ref('');
