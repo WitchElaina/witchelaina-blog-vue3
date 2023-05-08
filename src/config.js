@@ -2,7 +2,7 @@ const config = {
   site: {
     title: "WitchElaina's Blog",
     description: 'My site description',
-    avatar: './public/ava.png',
+    avatar: './ava.png',
     social: [
       {
         name: 'Github',
