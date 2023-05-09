@@ -15,6 +15,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      '@post': fileURLToPath(new URL('./public/post', import.meta.url)),
     },
   },
   base: '/witchelaina-blog-vue3/',

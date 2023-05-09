@@ -1,6 +1,10 @@
-<script setup></script>
+<script setup>
+import ArticleContent from '../components/ArticleContent.vue';
+</script>
 
-<template>1</template>
+<template>
+  <ArticleContent :url="'frp'" />
+</template>
 
 <style lang="scss" scoped>
 .wrapper {
