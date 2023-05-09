@@ -92,7 +92,7 @@ const navList = Object.entries(site.nav).map(([key, value]) => ({
       <TextNav
         :navList="navList"
         v-model:curActive="curNav"
-        @update:cur-active="router.push({ path: curNav })"
+        @update:cur-active="$router.push('/' + $event)"
       />
     </div>
     <div class="hitokoto">

@@ -2,6 +2,7 @@
   "name": "vue-blog",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -35,6 +36,7 @@
     "eslint-plugin-vue": "^9.9.0",
     "prettier": "^2.8.4",
     "push-dir": "^0.4.1",
-    "vite": "^4.1.4"
+    "vite": "^4.1.4",
+    "vite-plugin-md": "^0.22.5"
   }
 }
