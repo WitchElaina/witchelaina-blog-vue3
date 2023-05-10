@@ -34,30 +34,30 @@ watch(
 );
 
 // 监听向下滚动
-const wheelHandler = (e) => {
-  if (foldedMutex.value) {
-    return;
-  }
-  e.preventDefault();
-  if (e.deltaY > 0) {
-    folded.value = true;
-  } else if (e.deltaY < 0) {
-    if (window.pageYOffset === 0) {
-      folded.value = false;
-    }
-  }
-};
+// const wheelHandler = (e) => {
+//   if (foldedMutex.value) {
+//     return;
+//   }
+//   e.preventDefault();
+//   if (e.deltaY > 0) {
+//     folded.value = true;
+//   } else if (e.deltaY < 0) {
+//     if (window.pageYOffset === 0) {
+//       folded.value = false;
+//     }
+//   }
+// };
 
 // 挂载
-onMounted(() => {
-  window.addEventListener('wheel', wheelHandler);
-  window.addEventListener('transitionstart', () => {
-    foldedMutex.value = true;
-  });
-  window.addEventListener('transitionend', () => {
-    foldedMutex.value = false;
-  });
-});
+// onMounted(() => {
+//   window.addEventListener('wheel', wheelHandler);
+//   window.addEventListener('transitionstart', () => {
+//     foldedMutex.value = true;
+//   });
+//   window.addEventListener('transitionend', () => {
+//     foldedMutex.value = false;
+//   });
+// });
 
 // 遍历key value
 const navList = Object.entries(site.nav).map(([key, value]) => ({
@@ -73,6 +73,7 @@ const navList = Object.entries(site.nav).map(([key, value]) => ({
     :class="{
       'card-wrapper-folded': folded,
     }"
+    blur
   >
     <div class="avatar" @click="folded = !folded">
       <img :src="site.avatar" alt="avatar" :draggable="false" />
@@ -109,6 +110,7 @@ const navList = Object.entries(site.nav).map(([key, value]) => ({
   flex-direction: column;
   align-items: center;
   transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
+  font-family: 'Roboto', sans-serif;
 
   .avatar {
     position: absolute;

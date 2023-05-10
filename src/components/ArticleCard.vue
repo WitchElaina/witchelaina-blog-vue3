@@ -22,7 +22,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <card class="article-card-wrapper" :width="'80vw'" :max-width="'1000px'">
+  <card class="article-card-wrapper" blur>
     <div class="article-card-content on-surface-text">
       <div class="title">
         {{ title }}
@@ -65,7 +65,7 @@ const props = defineProps({
 <style lang="scss" scoped>
 .article-card-wrapper {
   transition: all 1s cubic-bezier(0.23, 1, 0.32, 1);
-
+  font-family: 'Roboto', sans-serif;
   .article-card-content {
     position: relative;
     margin: 20px 40px;

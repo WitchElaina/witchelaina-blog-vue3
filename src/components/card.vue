@@ -5,6 +5,7 @@
       backgroundColor,
       width,
       maxWidth,
+      backdropFilter: blur ? 'blur(15px)' : 'none',
     }"
   >
     <slot />
@@ -21,9 +22,10 @@ export default {
 import { ref, watch } from 'vue';
 import { hexVarToRgba } from '../utils/hexToRgba';
 
-defineProps({
+const props = defineProps({
   width: String,
   maxWidth: String,
+  blur: Boolean,
 });
 
 // 当system preference变化时，更新背景色
@@ -32,7 +34,10 @@ const darkMode = ref(window.matchMedia('(prefers-color-scheme: dark)').matches);
 watch(
   darkMode,
   () => {
-    backgroundColor.value = hexVarToRgba('--md-sys-color-surface', 0.7);
+    backgroundColor.value = hexVarToRgba(
+      '--md-sys-color-surface',
+      props.blur ? 0.8 : 0.95,
+    );
   },
   {
     immediate: true,
@@ -49,11 +54,6 @@ if (window.matchMedia) {
 
 <style scoped lang="scss">
 .card-wrapper {
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-
-  width: fit-content;
-
   border-radius: 25px;
 
   padding: 20px;

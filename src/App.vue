@@ -9,15 +9,17 @@ import MainCard from './layout/MainCard.vue';
   </div>
 </template>
 
-<style lang="scss" scoped>
-.wrapper {
+<style lang="scss">
+#app {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .view-card {
+  .wrapper {
     width: 80vw;
-    max-width: 1000px;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 </style>
