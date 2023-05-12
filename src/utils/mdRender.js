@@ -1,6 +1,5 @@
 import MarkdownIt from 'markdown-it';
 import markdownItKatex from 'markdown-it-katex';
-import frontMatter from 'markdown-it-front-matter';
 
 import { createStarryNight, common } from '@wooorm/starry-night';
 import { toHtml } from 'hast-util-to-html';
@@ -37,10 +36,11 @@ const MdRender = async (url) => {
   });
 
   md.use(markdownItKatex);
-  md.use(frontMatter);
 
   const res = await fetch(url);
-  const text = await res.text();
+  // 去除frontmatter
+  let text = await res.text();
+  text = text.replace(/^---[\s\S]*?---/, '');
   return md.render(text);
 };
 

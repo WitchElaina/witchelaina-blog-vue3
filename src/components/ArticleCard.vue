@@ -9,22 +9,28 @@ export default {
 
 <script setup>
 import card from './card.vue';
-import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const props = defineProps({
-  id: Number,
+  id: String,
   title: String,
   content: String,
   date: String,
   tags: Array,
   views: Number,
 });
+
+const onClick = () => {
+  router.push('/post/' + props.id);
+};
 </script>
 
 <template>
   <card class="article-card-wrapper" blur>
     <div class="article-card-content on-surface-text">
-      <div class="title">
+      <div class="title" @click="onClick">
         {{ title }}
       </div>
       <div class="status">

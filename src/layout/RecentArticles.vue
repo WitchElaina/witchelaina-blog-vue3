@@ -7,7 +7,10 @@ const articles = ref([]);
 const prefix = useConfig().public.prefix;
 
 onMounted(async () => {
-  articles.value = fetch(prefix + '/articles.json').then((res) => res.json());
+  articles.value = await fetch(prefix + '/articles.json').then((res) =>
+    res.json(),
+  );
+  console.log(articles.value);
 });
 </script>
 
@@ -30,6 +33,5 @@ onMounted(async () => {
 .recent-articles-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 </style>
