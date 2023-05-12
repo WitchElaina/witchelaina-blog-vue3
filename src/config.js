@@ -2,7 +2,7 @@ const config = {
   site: {
     title: "WitchElaina's Blog",
     description: 'My site description',
-    avatar: './public/ava.png',
+    avatar: './ava.png',
     social: [
       {
         name: 'Github',
@@ -53,6 +53,10 @@ const config = {
       api: 'https://v1.hitokoto.cn/',
       type: ['a', 'i'], // https://developer.hitokoto.cn/sentence/#句子类型-参数
     },
+  },
+  public: {
+    prefix:
+      'https://raw.githubusercontent.com/WitchElaina/witchelaina-blog-vue3/ph-pages/post',
   },
 };
 

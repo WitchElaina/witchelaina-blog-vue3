@@ -1,11 +1,13 @@
 <script setup>
 import ArticleCard from '../components/ArticleCard.vue';
-import { getRecentArticles } from '../utils/getRecentArticles';
 import { ref, onMounted } from 'vue';
+import { useConfig } from '../config';
+
 const articles = ref([]);
+const prefix = useConfig().public.prefix;
 
 onMounted(async () => {
-  articles.value = await getRecentArticles();
+  articles.value = fetch(prefix + '/articles.json').then((res) => res.json());
 });
 </script>
 

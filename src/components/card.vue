@@ -67,5 +67,8 @@ if (window.matchMedia) {
     box-shadow: 0 6px 12px 0 rgba($color: #000000, $alpha: 0.7);
     -webkit-box-shadow: 0 6px 12px 0 rgba($color: #000000, $alpha: 0.7);
   }
+
+  // enable GPU acceleration
+  transform: translateZ(0);
 }
 </style>

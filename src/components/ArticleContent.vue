@@ -28,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <card class="article-card-wrapper" blur>
+  <card class="article-card-wrapper">
     <div class="markdown-body" ref="contentNode"></div>
   </card>
 </template>
