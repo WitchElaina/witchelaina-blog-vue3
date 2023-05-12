@@ -1,5 +1,6 @@
 import MarkdownIt from 'markdown-it';
 import markdownItKatex from 'markdown-it-katex';
+import markdownItTocAndAnchor from 'markdown-it-toc-and-anchor';
 
 import { createStarryNight, common } from '@wooorm/starry-night';
 import { toHtml } from 'hast-util-to-html';
@@ -37,11 +38,20 @@ const MdRender = async (url) => {
 
   md.use(markdownItKatex);
 
+  let toc = [];
+  md.use(markdownItTocAndAnchor, {
+    anchorLink: false,
+    tocCallback: function (tocMarkdown, tocArray, tocHtml) {
+      console.log(tocArray);
+      toc = tocArray;
+    },
+  });
+
   const res = await fetch(url);
   // 去除frontmatter
   let text = await res.text();
   text = text.replace(/^---[\s\S]*?---/, '');
-  return md.render(text);
+  return { html: md.render(text), toc };
 };
 
 export default MdRender;

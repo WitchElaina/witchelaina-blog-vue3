@@ -49,7 +49,7 @@ export default {
 
 <template>
   <div
-    class="wrapper"
+    class="icon-wrapper"
     @click="onClickDebounce"
     :style="{
       width: `${size}px`,
@@ -69,7 +69,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.wrapper {
+.icon-wrapper {
   position: relative;
   border-radius: 50%;
   overflow: hidden;

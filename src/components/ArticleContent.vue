@@ -19,7 +19,9 @@ const props = defineProps({
 const contentNode = ref(null);
 
 const load = async () => {
-  contentNode.value.innerHTML = await MdRender(props.url);
+  const { html, toc } = await MdRender(props.url);
+  contentNode.value.innerHTML = html;
+  console.log(toc);
 };
 
 onMounted(() => {

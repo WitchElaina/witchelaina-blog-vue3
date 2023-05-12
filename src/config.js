@@ -47,6 +47,10 @@ const config = {
         icon: 'fa-solid fa-link',
       },
     },
+    toc: {
+      number: true,
+      level: 2,
+    },
   },
   plugin: {
     hitokoto: {
