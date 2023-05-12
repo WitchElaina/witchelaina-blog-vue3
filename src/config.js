@@ -56,7 +56,7 @@ const config = {
   },
   public: {
     prefix:
-      'https://raw.githubusercontent.com/WitchElaina/witchelaina-blog-vue3/ph-pages/post',
+      'https://raw.githubusercontent.com/WitchElaina/witchelaina-blog-vue3/gh-pages/post',
   },
 };
 
