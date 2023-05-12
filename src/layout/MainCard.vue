@@ -33,31 +33,18 @@ watch(
   },
 );
 
-// 监听向下滚动
-// const wheelHandler = (e) => {
-//   if (foldedMutex.value) {
-//     return;
-//   }
-//   e.preventDefault();
-//   if (e.deltaY > 0) {
-//     folded.value = true;
-//   } else if (e.deltaY < 0) {
-//     if (window.pageYOffset === 0) {
-//       folded.value = false;
-//     }
-//   }
-// };
-
-// 挂载
-// onMounted(() => {
-//   window.addEventListener('wheel', wheelHandler);
-//   window.addEventListener('transitionstart', () => {
-//     foldedMutex.value = true;
-//   });
-//   window.addEventListener('transitionend', () => {
-//     foldedMutex.value = false;
-//   });
-// });
+// 监听路由变化
+watch(
+  () => router.currentRoute.value.path,
+  (val) => {
+    console.log(val);
+    if (val === '/') {
+      curNav.value = 'home';
+    } else {
+      curNav.value = val.slice(1);
+    }
+  },
+);
 
 // 遍历key value
 const navList = Object.entries(site.nav).map(([key, value]) => ({

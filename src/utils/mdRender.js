@@ -42,8 +42,11 @@ const MdRender = async (url) => {
   md.use(markdownItTocAndAnchor, {
     anchorLink: false,
     tocCallback: function (tocMarkdown, tocArray, tocHtml) {
-      console.log(tocArray);
-      toc = tocArray;
+      for (const item of tocArray) {
+        if (item.level === 2) {
+          toc.push(item);
+        }
+      }
     },
   });
 

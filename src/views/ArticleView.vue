@@ -1,5 +1,5 @@
 <script setup>
-import ArticleContent from '../components/ArticleContent.vue';
+import ArticlePage from '../layout/ArticlePage.vue';
 import { useConfig } from '../config';
 
 const prefix = useConfig().public.prefix;
@@ -10,5 +10,5 @@ defineProps({
 </script>
 
 <template>
-  <ArticleContent :url="prefix + '/' + id + '.md'" />
+  <ArticlePage :url="prefix + '/' + id + '.md'" />
 </template>

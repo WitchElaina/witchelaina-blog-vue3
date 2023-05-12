@@ -28,13 +28,13 @@ const onClick = () => {
 </script>
 
 <template>
-  <card class="article-card-wrapper" blur>
+  <card class="article-card-wrapper">
     <div class="article-card-content on-surface-text">
       <div class="title" @click="onClick">
         {{ title }}
       </div>
       <div class="status">
-        <div class="date icon-text-item">
+        <div class="date icon-text-item" v-if="date">
           <div class="icon-wrapper">
             <i class="icon fa-solid fa-calendar"></i>
           </div>
@@ -42,7 +42,7 @@ const onClick = () => {
             {{ date }}
           </div>
         </div>
-        <div class="views icon-text-item">
+        <div class="views icon-text-item" v-if="views">
           <div class="icon-wrapper">
             <i class="icon fa-solid fa-eye"></i>
           </div>
@@ -50,7 +50,7 @@ const onClick = () => {
             {{ views }}
           </div>
         </div>
-        <div class="tags icon-text-item">
+        <div class="tags icon-text-item" v-if="tags">
           <div class="icon-wrapper">
             <i class="icon fa-solid fa-tag"></i>
           </div>

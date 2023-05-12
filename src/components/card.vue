@@ -57,7 +57,7 @@ if (window.matchMedia) {
   border-radius: 25px;
 
   padding: 20px;
-  margin: 15px;
+  margin: 10px;
 
   box-shadow: 0 6px 10px 0 rgba($color: #000000, $alpha: 0.5);
   -webkit-box-shadow: 0 6px 10px 0 rgba($color: #000000, $alpha: 0.5);

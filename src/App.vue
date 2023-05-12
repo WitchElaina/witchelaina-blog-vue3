@@ -5,7 +5,7 @@ import MainCard from './layout/MainCard.vue';
 <template>
   <div class="wrapper">
     <MainCard class="view-card" />
-    <RouterView />
+    <RouterView class="router-view" />
   </div>
 </template>
 
@@ -15,10 +15,16 @@ import MainCard from './layout/MainCard.vue';
   flex-direction: column;
   align-items: center;
   .wrapper {
-    width: 80vw;
-    max-width: 1200px;
+    width: 90vw;
+    max-width: 1400px;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .router-view {
+    width: 90vw;
+    max-width: 1400px;
     align-items: stretch;
   }
 }

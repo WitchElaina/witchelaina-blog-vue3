@@ -21,8 +21,8 @@ onMounted(async () => {
       :key="article.id"
       :id="article.id"
       :title="article.title"
-      :content="article.content"
-      :date="article.date"
+      :content="article.description"
+      :date="new Date(article.date).toLocaleDateString()"
       :tags="article.tags"
       :views="article.views"
     />
@@ -31,7 +31,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped>
 .recent-articles-wrapper {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
 }
 </style>
