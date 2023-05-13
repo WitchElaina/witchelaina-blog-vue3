@@ -52,6 +52,13 @@ const navList = Object.entries(site.nav).map(([key, value]) => ({
   text: value.text,
   icon: value.icon,
 }));
+
+const avrClickHandler = () => {
+  folded.value = !folded.value;
+  window.scrollTo({
+    top: 0,
+  });
+};
 </script>
 
 <template>
@@ -62,7 +69,7 @@ const navList = Object.entries(site.nav).map(([key, value]) => ({
     }"
     blur
   >
-    <div class="avatar" @click="folded = !folded">
+    <div class="avatar" @click="avrClickHandler">
       <img :src="site.avatar" alt="avatar" :draggable="false" />
     </div>
     <div class="title display-small">
@@ -140,6 +147,7 @@ const navList = Object.entries(site.nav).map(([key, value]) => ({
     margin-top: 20px;
     flex-direction: row;
     gap: 10px;
+    box-shadow: 0 8px 20px 10px rgba(#000000, 0.2);
     .avatar {
       position: relative;
       top: 0;

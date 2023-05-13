@@ -14,18 +14,16 @@ import MainCard from './layout/MainCard.vue';
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-width: 700px;
   .wrapper {
-    width: 90vw;
-    max-width: 1400px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
   }
-
   .router-view {
-    width: 90vw;
-    max-width: 1400px;
+    width: 83vw;
+    max-width: 1300px;
   }
 }
 </style>
