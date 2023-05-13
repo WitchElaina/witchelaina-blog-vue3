@@ -36,7 +36,7 @@ watch(
   () => {
     backgroundColor.value = hexVarToRgba(
       '--md-sys-color-surface',
-      props.blur ? 0.8 : 0.95,
+      props.blur ? 0.9 : 0.95,
     );
   },
   {

@@ -28,7 +28,7 @@ const onClick = () => {
 </script>
 
 <template>
-  <card class="article-card-wrapper">
+  <card class="article-card-wrapper" blur>
     <div class="article-card-content on-surface-text">
       <div class="title" @click="onClick">
         {{ title }}

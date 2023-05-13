@@ -57,6 +57,8 @@ onMounted(() => {
   user-select: none;
   margin: 5px;
   gap: 5px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   .nav-item-wrapper {
     position: relative;

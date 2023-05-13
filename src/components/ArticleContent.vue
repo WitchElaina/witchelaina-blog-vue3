@@ -12,24 +12,36 @@ import card from './card.vue';
 </script>
 
 <template>
-  <card class="article-card-wrapper">
+  <card class="article-card-wrapper" blur>
     <div class="markdown-body">
       <slot />
     </div>
   </card>
 </template>
 
-<style>
-.markdown-body {
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding: 20px;
-  background: none !important;
-}
-
-@media (max-width: 767px) {
+<style lang="scss">
+.article-card-wrapper {
   .markdown-body {
-    padding: 15px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 20px;
+    background: none !important;
+
+    h1,
+    h2 {
+      border-bottom: none !important;
+    }
+    p {
+      font-size: 17px;
+    }
+    pre {
+    }
+  }
+
+  @media (max-width: 767px) {
+    .markdown-body {
+      padding: 15px;
+    }
   }
 }
 </style>

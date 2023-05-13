@@ -48,12 +48,11 @@ onMounted(async () => {
   justify-content: center;
   position: relative;
   .article-page-content {
-    width: 100%;
-    flex-grow: 1;
+    width: 85%;
   }
   .article-page-anchor {
     position: sticky;
-    min-width: 200px;
+    width: 15%;
   }
 }
 </style>

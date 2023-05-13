@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <card class="anchor-wrapper">
+  <card class="anchor-wrapper" blur>
     <div class="anchor-content">
       <div class="anchor-title headline-small">目录</div>
       <div class="anchor-list">
