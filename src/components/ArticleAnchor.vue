@@ -35,7 +35,7 @@ const onClick = (anchor) => {
 <template>
   <card class="anchor-wrapper" blur>
     <div class="anchor-content">
-      <div class="anchor-title headline-small on-surface-text">目录</div>
+      <div class="anchor-title on-surface-text">目录</div>
       <div class="anchor-list">
         <div
           class="anchor-item body-large"
@@ -63,12 +63,14 @@ const onClick = (anchor) => {
     .anchor-title {
       font-weight: 600;
       margin-bottom: 10px;
+      font-size: 20px;
     }
     .anchor-list {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
+      margin-left: 10px;
       .anchor-item {
         margin-bottom: 5px;
         cursor: pointer;
