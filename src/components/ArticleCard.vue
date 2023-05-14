@@ -89,11 +89,46 @@ const onClick = () => {
       display: flex;
       align-items: center;
       gap: 20px;
+      color: var(--md-sys-color-on-surface-variant);
+      user-select: none;
+
+      .icon-text-item {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+      }
+
+      .tags {
+        .text-wrapper {
+          display: flex;
+          gap: 5px;
+          .tag {
+            padding: 2px 5px;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 5px;
+            background-color: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface-variant);
+          }
+        }
+      }
+
+      .icon-wrapper {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon {
+          font-size: 15px;
+        }
+      }
     }
 
     .content {
       font-size: 1rem;
       line-height: 1.5;
+      color: var(--md-sys-color-on-surface-variant);
     }
   }
 }

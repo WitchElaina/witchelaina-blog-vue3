@@ -62,7 +62,7 @@ const onClick = (anchor) => {
     padding: 10px;
     .anchor-title {
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 18px;
       font-size: 20px;
     }
     .anchor-list {
@@ -71,8 +71,8 @@ const onClick = (anchor) => {
       justify-content: flex-start;
       align-items: flex-start;
       margin-left: 10px;
+      gap: 8px;
       .anchor-item {
-        margin-bottom: 5px;
         cursor: pointer;
         user-select: none;
         color: var(--md-sys-color-on-surface-variant);

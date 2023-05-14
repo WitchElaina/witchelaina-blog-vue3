@@ -11,6 +11,7 @@ export default {
 import { ref, onMounted } from 'vue';
 import ArticleAnchor from '../components/ArticleAnchor.vue';
 import ArticleContent from '../components/ArticleContent.vue';
+import ToolboxCard from '../components/ToolboxCard.vue';
 
 import MdRender from '../utils/MdRender';
 
@@ -35,8 +36,13 @@ onMounted(async () => {
         <div ref="markdownContent" />
       </ArticleContent>
     </div>
-    <div class="article-page-anchor">
-      <ArticleAnchor :toc="toc" />
+    <div class="article-page-sidebar">
+      <div class="article-page-anchor">
+        <ArticleAnchor :toc="toc" />
+      </div>
+      <div class="article-page-toolbox">
+        <ToolboxCard />
+      </div>
     </div>
   </div>
 </template>
@@ -50,9 +56,13 @@ onMounted(async () => {
   .article-page-content {
     width: 82%;
   }
-  .article-page-anchor {
-    position: sticky;
+  .article-page-sidebar {
+    height: fit-content;
     width: 18%;
+    position: sticky;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
   }
 }
 </style>

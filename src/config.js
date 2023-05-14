@@ -36,11 +36,6 @@ const config = {
         link: '/archive',
         icon: 'fa-solid fa-archive',
       },
-      anime: {
-        text: '追番',
-        link: '/anime',
-        icon: 'fa-brands fa-bilibili',
-      },
       friends: {
         text: '友链',
         link: '/friends',
