@@ -5,7 +5,7 @@
       backgroundColor,
       width,
       maxWidth,
-      backdropFilter: blur ? 'blur(15px)' : 'none',
+      backdropFilter: blur ? 'blur(40px)' : 'none',
     }"
   >
     <slot />
@@ -19,8 +19,9 @@ export default {
 </script>
 
 <script setup>
-import { ref, watch } from 'vue';
+import { nextTick, onMounted, ref, watch } from 'vue';
 import { hexVarToRgba } from '../utils/hexToRgba';
+import { useDark } from '@vueuse/core';
 
 const props = defineProps({
   width: String,
@@ -28,28 +29,33 @@ const props = defineProps({
   blur: Boolean,
 });
 
-// 当system preference变化时，更新背景色
-const backgroundColor = ref('');
-const darkMode = ref(window.matchMedia('(prefers-color-scheme: dark)').matches);
-watch(
-  darkMode,
-  () => {
-    backgroundColor.value = hexVarToRgba(
-      '--md-sys-color-surface',
-      props.blur ? 0.8 : 0.95,
-    );
-  },
-  {
-    immediate: true,
-  },
-);
+const getBackgroundColor = () => {
+  backgroundColor.value = hexVarToRgba(
+    '--md-sys-color-surface',
+    props.blur ? 0.8 : 0.95,
+  );
+};
 
-if (window.matchMedia) {
-  const colorSchema = window.matchMedia('(prefers-color-scheme: dark)');
-  colorSchema.addListener((e) => {
-    darkMode.value = e.matches;
-  });
-}
+const darkMode = useDark();
+
+const backgroundColor = ref('');
+
+onMounted(() => {
+  setTimeout(() => {
+    getBackgroundColor();
+  }, 100);
+  watch(
+    () => darkMode.value,
+    () => {
+      setTimeout(() => {
+        getBackgroundColor();
+      }, 100);
+    },
+    {
+      immediate: true,
+    },
+  );
+});
 </script>
 
 <style scoped lang="scss">

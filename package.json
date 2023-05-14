@@ -19,6 +19,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@iktakahiro/markdown-it-katex": "^4.0.1",
     "@octokit/auth-app": "^4.0.10",
+    "@vueuse/core": "^10.1.2",
     "@vueuse/head": "^1.1.26",
     "@wooorm/starry-night": "^2.0.0",
     "front-matter": "^4.0.2",
