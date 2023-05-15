@@ -40,9 +40,6 @@ onMounted(async () => {
       <div class="article-page-anchor">
         <ArticleAnchor :toc="toc" />
       </div>
-      <div class="article-page-toolbox">
-        <ToolboxCard />
-      </div>
     </div>
   </div>
 </template>

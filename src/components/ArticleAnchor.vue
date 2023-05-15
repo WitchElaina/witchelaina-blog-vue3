@@ -35,7 +35,7 @@ const onClick = (anchor) => {
 <template>
   <card class="anchor-wrapper" blur>
     <div class="anchor-content">
-      <div class="anchor-title on-surface-text">目录</div>
+      <div class="anchor-title on-surface-text title-large">目录</div>
       <div class="anchor-list">
         <div
           class="anchor-item body-large"
