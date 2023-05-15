@@ -32,9 +32,10 @@ import card from './card.vue';
       border-bottom: none !important;
     }
     p {
-      font-size: 17px;
+      font-size: 16px;
     }
     pre {
+      font-size: 15px;
     }
   }
 

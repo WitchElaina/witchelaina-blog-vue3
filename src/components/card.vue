@@ -41,15 +41,12 @@ const darkMode = useDark();
 const backgroundColor = ref('');
 
 onMounted(() => {
-  setTimeout(() => {
-    getBackgroundColor();
-  }, 100);
   watch(
     () => darkMode.value,
     () => {
       setTimeout(() => {
         getBackgroundColor();
-      }, 100);
+      }, 50);
     },
     {
       immediate: true,

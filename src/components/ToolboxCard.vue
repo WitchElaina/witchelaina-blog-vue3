@@ -9,15 +9,11 @@ export default {
 
 <script setup>
 import card from './card.vue';
+import { useDark } from '@vueuse/core';
 
 // 切换深色模式
 const toggleDarkMode = () => {
-  // @media
-  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-  const darkMode = prefersDarkScheme.matches;
-  const newScheme = darkMode ? 'light' : 'dark';
-  document.body.classList.remove(`${newScheme}-mode`);
-  document.body.classList.add(`${darkMode ? 'light' : 'dark'}-mode`);
+  useDark().value = !useDark().value;
 };
 </script>
 
