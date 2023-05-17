@@ -26,9 +26,9 @@ const config = {
         link: '/',
         icon: 'fa-solid fa-home',
       },
-      catalog: {
+      category: {
         text: '目录',
-        link: '/catalog',
+        link: '/category',
         icon: 'fa-solid fa-book',
       },
       archive: {

@@ -14,12 +14,12 @@ body::-webkit-scrollbar {
 }
  body::after {
   content: "";
-  background-image: url(../../public/back.png);
+  background-image: url(https://cdn.staticaly.com/gh/LinYuanChan/image-hosting@master/C5FBDD7E-40B8-4B77-9D7F-72FA548C9F7C_1_105_c.61c2brrfq340.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: center;
-  opacity: 0.8;
+  opacity: 0.9;
   top: 0;
   left: 0;
   bottom: 0;

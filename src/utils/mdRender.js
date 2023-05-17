@@ -7,6 +7,7 @@ import hljs from 'highlight.js';
 import { toHtml } from 'hast-util-to-html';
 
 import 'github-markdown-css';
+import markdownItCodeCopy from 'markdown-it-code-copy';
 
 const MdRender = async (url) => {
   // init
@@ -20,6 +21,7 @@ const MdRender = async (url) => {
         try {
           const html = hljs.highlight(str, { language: lang }).value;
           return `<pre class="hljs"><code>${html}</code></pre>`;
+          // return `<pre class="hljs"><code>${html}</code><div class="code-copy-button-wrapper"><i class="fa-solid fa-copy"></i></div></pre>`;
         } catch (__) {}
       }
       return `<pre class="hljs"><code>${md.utils.escapeHtml(str)}</code></pre>`;
@@ -27,6 +29,11 @@ const MdRender = async (url) => {
   });
 
   md.use(markdownItKatex);
+  md.use(markdownItCodeCopy, {
+    buttonStyle:
+      'position: absolute; right: 0.3em; top: 0.6em; background: none; border: none; color: #aaa; display: flex; align-items: center; justify-content: center; width: 1.5em; height: 1.5em; cursor: pointer;',
+    iconStyle: 'font-size: 15px',
+  });
 
   let toc = [];
   md.use(markdownItTocAndAnchor, {

@@ -9,6 +9,20 @@ export default {
 
 <script setup>
 import card from './card.vue';
+import { nextTick, onMounted, useSlots } from 'vue';
+
+onMounted(() => {
+  nextTick(() => {
+    // 获取插槽
+    const slotElement = useSlots().default()[0].el;
+    // 获取所有markdown-it-code-copy类
+    const codeCopyList = slotElement.querySelectorAll('.markdown-it-code-copy');
+    // 遍历添加inner Html
+    codeCopyList.forEach((item) => {
+      item.innerHTML = '<i class="icon fa-solid fa-copy"></i>';
+    });
+  });
+});
 </script>
 
 <template>
@@ -35,7 +49,30 @@ import card from './card.vue';
       font-size: 16px;
     }
     pre {
-      font-size: 15px;
+      position: relative;
+      font-size: 14px;
+      background-color: rgba(0, 0, 0, 0.8);
+      .code-copy-button-wrapper {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        border-radius: 0 0 0 5px;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        user-select: none;
+        cursor: pointer;
+        i {
+          color: #fff;
+          font-size: 14px;
+        }
+      }
+
+      &:hover {
+        .code-copy-button-wrapper {
+          opacity: 0.8;
+        }
+      }
     }
   }
 
